@@ -1,33 +1,7 @@
-// /* eslint-disable react-native/no-inline-styles */
-// import React from 'react';
-// import { View, Text, StyleSheet } from 'react-native';
-
-// export default function App() {
-//   return (
-//     <View style={styles.container}>
-//       <Text style={styles.text}>Hello, React Native Web!</Text>
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: '#f0f0f0',
-//   },
-//   text: {
-//     fontSize: 24,
-//     color: '#333',
-//   },
-// });
-
-
-
+//App routing
 
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Dimensions } from 'react-native';
 
 const App = () => {
   const [email, setEmail] = useState('');
@@ -39,7 +13,6 @@ const App = () => {
       return;
     }
 
-    // Perform login logic here (e.g., API call)
     Alert.alert('Success', `Welcome ${email}!`);
   };
 
@@ -77,22 +50,27 @@ const App = () => {
   );
 };
 
+const { width, height } = Dimensions.get('window');
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f9f9f9',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: '5%',
+    paddingVertical: height * 0.05,
   },
   title: {
     fontSize: 32,
     fontWeight: 'bold',
     color: '#333',
-    marginBottom: 20,
+    marginBottom: height * 0.02,
+    textAlign: 'center',
   },
   input: {
     width: '100%',
+    maxWidth: 400, // Restrict max width for larger screens
     height: 50,
     backgroundColor: '#fff',
     borderColor: '#ddd',
@@ -102,9 +80,11 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     fontSize: 16,
     color: '#333',
+    outlineStyle: 'none', // Remove web input focus outline
   },
   button: {
     width: '100%',
+    maxWidth: 400,
     height: 50,
     backgroundColor: '#007bff',
     justifyContent: 'center',
